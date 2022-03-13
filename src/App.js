@@ -2,6 +2,7 @@ import logo from './myrrh_logo.png';
 import './App.css';
 import "@fontsource/jim-nightshade";
 import { useState } from "react";
+import StripeCheckout from 'react-stripe-checkout';
 
 
 function App() {
@@ -31,7 +32,17 @@ function App() {
           </select><br/>
           Total Cost: ${quantity * 15} + shipping<br/>
         </div>
-        <button onClick={() => alert("Hi- thanks for your order! you're the best!  - Jamie")}>BUY 😁</button>
+        
+        <StripeCheckout
+          lineItes
+          bitcoin
+          shippingAddress
+          amount={quantity * 15 * 100}
+          token={data => alert(`Thanks for your payment\n${JSON.stringify(data)}`)} 
+          // label="BUY 😁"
+          stripeKey="pk_test_51KcYEaG0RnPll7CdR07DRlWYy4V0hKFw7MAOotcOUpWkAVzHJwdXUWaPtDQcGH1TUu7tNXXOAYYkk35Ip5lAT6cg00owNpfIlZ">
+          <button>BUY 😁</button>
+        </StripeCheckout>
       </div>
     </div>
   );
