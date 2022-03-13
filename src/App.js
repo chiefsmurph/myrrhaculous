@@ -1,23 +1,38 @@
-import logo from './logo.svg';
+import logo from './myrrh_logo.png';
 import './App.css';
+import "@fontsource/jim-nightshade";
+import { useState } from "react";
+
 
 function App() {
+  const [quantity, setQuantity] = useState(1);
+  console.log({ quantity})
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+      <p>Hi, welcome to Myrrhaculous.com.<br/>You have come to the right place for all of your natural, organic health needs.</p>
+      <div className="App-content">
+        <h2>Jamie's All Natural Organic Tooth Powder</h2>
+        <ul>
+          <li>Not only is it anti-microbial, it also cleans and whitens teeth</li>
+          <li>Myrrh has been used as a medicinal herb for thousands of years.  It is mentioned several times in the Bible, in the writings as old as Psalms and the Song of Solomon.  Of course it is well known as one of the three gifts that Magi brought to Jesus Christ.</li>
+          <li>Ingredients: baking soda, myrrh, activated charcoal</li>
+        </ul>
+        <br/>
+        <div className="checkout-details">
+          Quantity: <select value={quantity} onChange={evt => setQuantity(Number(evt.target.value))}>
+            {
+              Array.from({length: 20}, (_, index) => index + 1).map(n => (
+                <option value={n}>{n}</option>
+              ))
+            }
+          </select><br/>
+          Total Cost: ${quantity * 15} + shipping<br/>
+        </div>
+        <button onClick={() => alert("Hi- thanks for your order! you're the best!  - Jamie")}>BUY 😁</button>
+      </div>
     </div>
   );
 }
