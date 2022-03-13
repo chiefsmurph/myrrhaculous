@@ -3,13 +3,15 @@ import './App.css';
 import "@fontsource/jim-nightshade";
 import { useState } from "react";
 import StripeCheckout from 'react-stripe-checkout';
-
+import Favicon from 'react-favicon';
+import favico from "./favicon.ico";
 
 function App() {
   const [quantity, setQuantity] = useState(1);
   console.log({ quantity})
   return (
     <div className="App">
+      <Favicon url={favico} />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
       </header>
